@@ -1,0 +1,65 @@
+name: Approved staging deployment
+
+on:
+  workflow_dispatch:
+    inputs:
+      commit_sha:
+        description: Full main commit SHA with successful SafePathAI CI
+        required: true
+        type: string
+      backend_image:
+        description: ghcr.io/owner/repository/backend@sha256 digest from CI
+        required: true
+        type: string
+      frontend_image:
+        description: ghcr.io/owner/repository/frontend@sha256 digest from CI
+        required: true
+        type: string
+      backward_compatible_migration:
+        description: Operator verified migration is compatible with previous application images
+        required: true
+        default: false
+        type: boolean
+
+permissions:
+  contents: read
+  actions: read
+  packages: read
+concurrency:
+  group: safepath-staging
+  cancel-in-progress: false
+
+jobs:
+  deploy-staging:
+    if: github.ref == 'refs/heads/main' && inputs.backward_compatible_migration
+    environment: staging
+    # Dedicated runner; never use a production host. Configure required reviewers
+    # and main-only deployment branch policy on the staging GitHub Environment.
+    runs-on: [self-hosted, linux, x64, safepath-staging]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.commit_sha }}
+      - name: Verify the exact commit passed CI on main
+        env:
+          GH_TOKEN: ${{ github.token }}
+          EXPECTED_SHA: ${{ inputs.commit_sha }}
+          REPOSITORY: ${{ github.repository }}
+        run: |
+          [[ "$EXPECTED_SHA" =~ ^[0-9a-f]{40}$ ]]
+          gh api "repos/$REPOSITORY/actions/workflows/ci.yml/runs?head_sha=$EXPECTED_SHA&status=success&event=push&branch=main" --jq '.workflow_runs | length > 0' | grep -qx true
+      - uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ github.token }}
+      - name: Preflight, backup, migrate, deploy and smoke with application rollback
+        env:
+          BACKEND_IMAGE: ${{ inputs.backend_image }}
+          FRONTEND_IMAGE: ${{ inputs.frontend_image }}
+          EXPECTED_SHA: ${{ inputs.commit_sha }}
+          IMAGE_REPOSITORY: ${{ github.repository }}
+          # Paths and secrets live on this dedicated host, never in artifacts/logs.
+          STAGING_ENV_FILE: ${{ vars.STAGING_ENV_FILE }}
+          STAGING_BACKUP_DIR: ${{ vars.STAGING_BACKUP_DIR }}
+        run: python3 -m scripts.production.deploy_staging --execute

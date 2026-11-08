@@ -1,0 +1,81 @@
+{
+  "status": "LIMITED",
+  "reason": "Point-in-time local metadata plus at most3 source-image probes; registry != active cameras. No fleet sweep, no uptime claim.",
+  "registered_count": 796,
+  "reported_status_distribution": {
+    "STALE": 796
+  },
+  "summary": {
+    "total_registered": 796,
+    "valid_gps_count": 796,
+    "checked_count": 796,
+    "valid_images_count": 704,
+    "stale_images_count": 10,
+    "unavailable_count": 4,
+    "analyzed_count": 714,
+    "cycle_checked_count": 719,
+    "cycle_target_sec": 600,
+    "last_scheduler_cycle": "2026-11-08T02:54:40.613328Z",
+    "cycle_target_met": true
+  },
+  "sample_size": 3,
+  "valid_sample_images": 3,
+  "samples": [
+    {
+      "sample": 1,
+      "http_status": 200,
+      "valid_image": true,
+      "retrieved_at": "2026-11-08T02:54:46.442503+00:00",
+      "elapsed_ms": 16.249542008154094,
+      "capture_time_verified": false
+    },
+    {
+      "sample": 2,
+      "http_status": 200,
+      "valid_image": true,
+      "retrieved_at": "2026-11-08T02:54:46.453890+00:00",
+      "elapsed_ms": 12.59504200424999,
+      "capture_time_verified": false
+    },
+    {
+      "sample": 3,
+      "http_status": 200,
+      "valid_image": true,
+      "retrieved_at": "2026-11-08T02:54:46.467736+00:00",
+      "elapsed_ms": 13.480791996698827,
+      "capture_time_verified": false
+    }
+  ],
+  "wall_seconds": 0.23922983300872147,
+  "capture_age_seconds": {
+    "count": 0,
+    "p50": null,
+    "p95": null
+  },
+  "refresh_latency": {
+    "status": "NOT EVALUATED",
+    "reason": "No controlled source publication timestamp or multi-cycle observation."
+  },
+  "sweep_duration": {
+    "status": "NOT EVALUATED",
+    "reason": "Full public-camera sweep intentionally not triggered."
+  },
+  "overlay_consistency": {
+    "status": "NOT EVALUATED",
+    "reason": "No fresh overlay audit in this metadata-only run; no public users trigger inference."
+  },
+  "snapshot_database_audit": {
+    "snapshots": 30283,
+    "analyzed": 2301,
+    "consistent": 2301,
+    "mismatched": 0,
+    "known_capture_time": 0,
+    "retrieval_age_p50_seconds": 20876.227575,
+    "retrieval_age_p95_seconds": 49211.679741,
+    "metadata_consistency_ratio": 1.0,
+    "status": "LIMITED",
+    "reason": "Stored DB metadata only; no claim that derivative bytes or capture timestamps were independently verified. Null ratio when no analyzed snapshot."
+  },
+  "measured_at": "2026-11-08T02:46:39.527603+00:00",
+  "counter_interpretation": "Reported source_status distribution and scheduler valid_images_count have different capture/retrieval semantics/update windows; valid retrieval is not verified capture time. No fleet uptime inference."
+}

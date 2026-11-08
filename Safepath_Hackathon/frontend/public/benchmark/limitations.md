@@ -1,0 +1,3 @@
+# Limitations
+
+No ground truth means no flood/vehicle accuracy claim. Model hash validation is not accuracy. Synthetic scenario pass rate is not field safety. Provider names are not proof GPU/NeuralEngine executed: use recorded ORT node providers. Serial FPS is not concurrent API throughput. Capture time may be unknown despite recent retrieval. Camera metadata is not uptime/sweep acceptance. Load bursts on scratch local infrastructure are not production capacity. PyTorch parity is blocked without torch/checkpoint evaluation data. No production config, weights, camera permissions or routes are changed.

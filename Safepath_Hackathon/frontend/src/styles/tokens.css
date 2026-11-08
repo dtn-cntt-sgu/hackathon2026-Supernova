@@ -1,0 +1,84 @@
+/**
+ * SafePath AI — Light Cinematic 3D Design Tokens
+ * Direction: Super Premium Light Cinematic & Spatial Computing
+ */
+
+:root {
+  /* ==========================================================================
+     1. LIGHT CINEMATIC PALETTE (Exact Requirements)
+     ========================================================================== */
+
+  /* Core Canvas & Surfaces */
+  --bg-primary: #F8FBFF;           /* Ultra-clean daylight ambient background */
+  --bg-secondary: #FFFFFF;         /* Pure white surface */
+  --surface-soft-blue: #E9F5FF;    /* Gentle blue surface / cards */
+  --surface-ice-blue: #BFE8F7;     /* Ice blue accents & subtle badges */
+  --surface-mist: #EEF7FD;         /* Ultra-light blue tint */
+
+  /* Brand Accents */
+  --primary-blue: #168BD2;         /* Smart City Primary Blue */
+  --primary-blue-hover: #0E78B9;
+  --accent-teal: #18B6AD;          /* Electric Cyan / Teal Glow */
+  --accent-teal-hover: #139B94;
+  --accent-indigo: #4F46E5;        /* Auxiliary smart navigation tone */
+
+  /* High-Contrast Typography (WCAG AAA Compliant on Light Canvas) */
+  --text-primary: #142A3B;         /* Deep Oceanic Navy, 14.2:1 contrast ratio */
+  --text-secondary: #607889;       /* Slate Blue, 4.8:1 contrast ratio */
+  --text-muted: #829AA8;           /* Muted Caption, 3.5:1 */
+  --text-inverse: #FFFFFF;
+
+  /* Tactical Signals */
+  --signal-warning: #E8A13B;       /* Amber Warning */
+  --signal-warning-bg: #FEF6EB;
+  --signal-warning-border: #FCD69F;
+
+  --signal-danger: #E16B68;        /* Coral / Rose Flood Alert */
+  --signal-danger-bg: #FDF1F0;
+  --signal-danger-border: #F8BCBA;
+
+  --signal-safe: #18B6AD;          /* Emerald / Teal Safe */
+  --signal-safe-bg: #EDFAF8;
+  --signal-safe-border: #A3ECE7;
+
+  /* ==========================================================================
+     2. FROSTED GLASS & AMBIENT DEPTH TOKENS
+     ========================================================================== */
+
+  --glass-bg-subtle: rgba(255, 255, 255, 0.65);
+  --glass-bg-default: rgba(255, 255, 255, 0.82);
+  --glass-bg-elevated: rgba(255, 255, 255, 0.92);
+  --glass-bg-ice: rgba(233, 245, 255, 0.78);
+
+  --glass-border-subtle: rgba(255, 255, 255, 0.75);
+  --glass-border-default: rgba(255, 255, 255, 0.92);
+  --glass-border-blue: rgba(22, 139, 210, 0.22);
+  --glass-border-teal: rgba(24, 182, 173, 0.30);
+
+  /* Soft Ambient Shadows (Apple-like Spatial Depth) */
+  --shadow-ambient-sm:
+    0 2px 8px -2px rgba(20, 42, 59, 0.05),
+    0 1px 3px 0 rgba(20, 42, 59, 0.03);
+  
+  --shadow-ambient-md:
+    0 12px 32px -4px rgba(22, 139, 210, 0.08),
+    0 4px 16px -2px rgba(20, 42, 59, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95);
+
+  --shadow-ambient-elevated:
+    0 24px 56px -8px rgba(22, 139, 210, 0.14),
+    0 8px 24px -4px rgba(20, 42, 59, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 1);
+
+  --shadow-glow-blue: 0 0 24px 0 rgba(22, 139, 210, 0.35);
+  --shadow-glow-teal: 0 0 24px 0 rgba(24, 182, 173, 0.40);
+
+  /* Shared Variables for backwards compatibility */
+  --background: var(--bg-primary);
+  --foreground: var(--text-primary);
+  --pearl-white: var(--bg-primary);
+  --glacier-white: var(--bg-secondary);
+  --ice-blue: var(--surface-ice-blue);
+  --primary: var(--primary-blue);
+  --accent: var(--accent-teal);
+}

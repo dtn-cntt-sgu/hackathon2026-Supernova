@@ -1,0 +1,50 @@
+{
+  "timestamp_utc": "2026-11-07T09:48:18.282757+00:00",
+  "batch_size_tested": 28,
+  "cycle_1": {
+    "duration_sec": 5.44,
+    "requests_per_minute": 309.0,
+    "metrics": {
+      "total": 28,
+      "freshness_distribution": {
+        "RECENTLY_RETRIEVED_CAPTURE_UNKNOWN": 22,
+        "PLACEHOLDER": 6
+      },
+      "http_status_distribution": {
+        "200": 28
+      },
+      "new_frames": 28,
+      "dedup_frames": 0,
+      "placeholders": 6
+    }
+  },
+  "cycle_2_dedup": {
+    "duration_sec": 5.48,
+    "metrics": {
+      "total": 28,
+      "freshness_distribution": {
+        "RECENTLY_RETRIEVED_CAPTURE_UNKNOWN": 22,
+        "PLACEHOLDER": 6
+      },
+      "http_status_distribution": {
+        "200": 28
+      },
+      "new_frames": 28,
+      "dedup_frames": 0,
+      "placeholders": 6
+    }
+  },
+  "inference": {
+    "tested_frames_count": 5,
+    "avg_latency_ms_per_frame": 579.54
+  },
+  "full_fleet_projection": {
+    "total_fleet_nodes": 796,
+    "batch_size": 14,
+    "poll_interval_sec": 60,
+    "max_concurrency": 8,
+    "projected_full_sweep_sec": 568.6,
+    "projected_full_sweep_min": 9.48,
+    "target_600s_met": true
+  }
+}

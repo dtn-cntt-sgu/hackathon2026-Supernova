@@ -1,0 +1,64 @@
+{
+  "generated_at": "2026-11-08T02:46:39.527603+00:00",
+  "os": "macOS-27.0.1-arm64-arm-64bit",
+  "machine": "arm64",
+  "cpu": "Apple M2",
+  "logical_cpus": 8,
+  "python": "3.12.5",
+  "onnxruntime": "1.31.0",
+  "available_providers": [
+    "CoreMLExecutionProvider",
+    "AzureExecutionProvider",
+    "CPUExecutionProvider"
+  ],
+  "commit_sha": "d80b15c6e25b753ac0ea1e34222d99ed42d47131",
+  "branch": "feature/camera-proxy-route-ai-only",
+  "dirty_worktree": true,
+  "tracked_diff_sha256": "c3aa5f5bd56002933e91b1e2080f7e7c14cbcde4bbdf0ad30a9cfb52a51389ba",
+  "models": {
+    "vehicle_detector": {
+      "version": "vgg16-ssd-hcmc",
+      "architecture": "VGG16_SSD_OBJECT_DETECTION",
+      "sha256": "25fb82c0bec3091c099f359e66398a03cc73ee8917dc85467c44fad6115e81d7",
+      "manifest_sha256": "25fb82c0bec3091c099f359e66398a03cc73ee8917dc85467c44fad6115e81d7",
+      "hash_matches": true,
+      "file_bytes": 96755027,
+      "historical_manifest_metrics": "NOT VERIFIED by this run"
+    },
+    "flood_segmenter": {
+      "version": "1.0.0-hcmc-flood",
+      "architecture": "SEMANTIC_SEGMENTATION",
+      "sha256": "ea537875c78762a22261af663997e0d98b724f03c063698286fa02d161198496",
+      "manifest_sha256": "ea537875c78762a22261af663997e0d98b724f03c063698286fa02d161198496",
+      "hash_matches": true,
+      "file_bytes": 165175,
+      "historical_manifest_metrics": "NOT VERIFIED by this run"
+    }
+  },
+  "working_tree_note": "Commit SHA alone does not reproduce uncommitted code; archive this source tree/diff plus dataset/model hashes.",
+  "torch_available": false,
+  "artifact_finalization_at": "2026-11-08T03:03:32.796586+00:00",
+  "final_tool_source_sha256": {
+    "scripts/benchmark_eval/__init__.py": "1341b8e5487a54546567cd8983220103bb1bfccc568f68f7e93054245eaa1432",
+    "scripts/benchmark_eval/datasets.py": "6399818213dba2e39cb29f5ef119803f2c6258a35bf791e9a0e43a2a893e808a",
+    "scripts/benchmark_eval/evaluation.py": "1002b5069e844cfcd5b91a1224162279fcfd4a1eb91452f322c928189514ec37",
+    "scripts/benchmark_eval/local_server.py": "cc8e1056a5eaafdf50f3719c884bed8a890fc1f6f0ea6555b3fbda43d8ad5e41",
+    "scripts/benchmark_eval/metrics.py": "fde1b9fea7521646dae22fc001ad6db74f35dc6f8f3840d46c03625140398a4d",
+    "scripts/benchmark_eval/operational.py": "0f0f3a1d1531e9fc4ae8eb62ab483885c728509a7dc9fda96f71543a8770abca",
+    "scripts/benchmark_eval/performance.py": "e10e40d2719b14362a15c2bed0ad1b2aea425e20eb1594a883aca6c512d4444f",
+    "scripts/run_hackathon_benchmark.py": "00b318ebfebcda232eff349daecba1fab2412f26c88eb019f57d081a4074ebeb"
+  },
+  "checkpoint_artifacts": {
+    "flood_unet_checkpoint.pt": {
+      "sha256": "c80f108b7c8d4dfc0b6a56b8011ac211615cb2c550f31fccbccd684c53bad578",
+      "bytes": 207107,
+      "parity_status": "NOT EVALUATED: no PyTorch execution in this ONNX benchmark"
+    },
+    "vgg16-ssd-Epoch-170-Loss-1.8997838258743287.pth": {
+      "sha256": "b6f9c6b566d2a5ad31e50e72ea8cec66aabc84ae17ffb2235426f7f178dcf35f",
+      "bytes": 96619012,
+      "parity_status": "NOT EVALUATED: no PyTorch execution in this ONNX benchmark"
+    }
+  },
+  "source_record_limitation": "This dirty run initially recorded commit/tracked diff only. The final tool source hashes were captured after reporting/safety review fixes; they are not falsely labelled as hashes captured before inference. Inference raw timings were preserved."
+}

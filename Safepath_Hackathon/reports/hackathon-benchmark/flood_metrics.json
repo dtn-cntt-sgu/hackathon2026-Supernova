@@ -1,0 +1,17 @@
+{
+  "status": "NOT EVALUATED",
+  "reason": "No labelled test manifest supplied; no accuracy can be measured",
+  "model": {
+    "name": "flood_unet.onnx",
+    "version": "1.0.0-hcmc-flood",
+    "sha256": "ea537875c78762a22261af663997e0d98b724f03c063698286fa02d161198496",
+    "manifest_sha256": "ea537875c78762a22261af663997e0d98b724f03c063698286fa02d161198496",
+    "hash_matches_manifest": true,
+    "supported_classes": {
+      "0": "background_road",
+      "1": "surface_water"
+    }
+  },
+  "measured_at": "2026-11-08T02:46:39.593858+00:00",
+  "task": "flood"
+}

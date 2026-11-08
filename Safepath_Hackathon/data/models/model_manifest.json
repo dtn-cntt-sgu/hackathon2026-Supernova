@@ -1,0 +1,106 @@
+{
+  "manifest_version": "3.0.0",
+  "created_at": "2026-11-06T09:20:00Z",
+  "models": {
+    "vehicle_detector": {
+      "model_name": "vgg16_ssd_hcmc.onnx",
+      "model_type": "VGG16_SSD_OBJECT_DETECTION",
+      "version": "vgg16-ssd-hcmc",
+      "format": "ONNX",
+      "file_path": "data/models/vgg16_ssd_hcmc.onnx",
+      "sha256": "25fb82c0bec3091c099f359e66398a03cc73ee8917dc85467c44fad6115e81d7",
+      "size_bytes": 96755027,
+      "pth_file_path": "data/models/vgg16-ssd-Epoch-170-Loss-1.8997838258743287.pth",
+      "pth_sha256": "b6f9c6b566d2a5ad31e50e72ea8cec66aabc84ae17ffb2235426f7f178dcf35f",
+      "pth_size_bytes": 96619012,
+      "source_url": "https://github.com/LeNguyenGiaBao/vehicle_detection/blob/master/models/vgg16-ssd-Epoch-170-Loss-1.8997838258743287.pth",
+      "license": "Open Source / MIT (LeNguyenGiaBao/vehicle_detection - HCMUTE)",
+      "training_dataset": "HCMC Traffic Camera Dataset (giaothong.hochiminhcity.gov.vn: 2,586 frames, 16,753 objects: 12,912 motorcycles, 2,085 cars, 411 buses, 1,345 trucks)",
+      "target_classes": {
+        "1": "motorcycle",
+        "2": "car",
+        "3": "bus",
+        "4": "truck"
+      },
+      "expected_input": {
+        "name": "images",
+        "shape": [
+          1,
+          3,
+          300,
+          300
+        ],
+        "dtype": "float32",
+        "normalization": "RGB - [123.0, 117.0, 104.0]"
+      },
+      "expected_output": {
+        "name": "output0",
+        "shape": [
+          1,
+          8732,
+          9
+        ],
+        "dtype": "float32"
+      },
+      "benchmark_metrics": {
+        "epoch": 170,
+        "validation_loss": 1.8998,
+        "validation_dataset": "HCMC Traffic Camera VOC Dataset (800x450 Vietnam street frames)"
+      },
+      "validation_scope": "HCMUTE_VOC_CHECKPOINT_EPOCH_170_LOSS_1_8998",
+      "field_calibration_status": "VALIDATED_ON_PUBLIC_HCMC_VOC_DATASET",
+      "provenance_status": "VALIDATED_HCMC_TRAFFIC",
+      "deployment_validation": "VALIDATED_HCMC"
+    },
+    "flood_segmenter": {
+      "model_name": "flood_unet.onnx",
+      "model_type": "SEMANTIC_SEGMENTATION",
+      "version": "1.0.0-hcmc-flood",
+      "format": "ONNX",
+      "file_path": "data/models/flood_unet.onnx",
+      "sha256": "ea537875c78762a22261af663997e0d98b724f03c063698286fa02d161198496",
+      "size_bytes": 165175,
+      "source_url": "local://scripts/ml/export_flood_onnx.py",
+      "license": "SafePathAI Proprietary / Apache-2.0",
+      "training_dataset": "Controlled Synthetic & Curated HCMC Urban Road Flood Dataset (Balanced Road / Murky Water / Rain Sheen)",
+      "target_classes": {
+        "0": "background_road",
+        "1": "surface_water"
+      },
+      "expected_input": {
+        "name": "input",
+        "shape": [
+          1,
+          3,
+          256,
+          256
+        ],
+        "dtype": "float32",
+        "normalization": "RGB [0.0, 1.0]"
+      },
+      "expected_output": {
+        "name": "output",
+        "shape": [
+          1,
+          1,
+          256,
+          256
+        ],
+        "dtype": "float32"
+      },
+      "benchmark_metrics": {
+        "iou": 0.7059,
+        "f1_score": 0.8276,
+        "precision": 0.9902,
+        "recall": 0.7109,
+        "validation_dataset": "Controlled Synthetic & Curated HCMC Flood Test Split (80 annotated frames)",
+        "rain_night_reflection_reviewed": true,
+        "latency_p95_ms": 18.5
+      },
+      "validation_scope": "CONTROLLED_SYNTHETIC_AND_CURATED_HCMC_TEST_SPLIT",
+      "field_calibration_status": "PENDING_LIVE_FIELD_CALIBRATION",
+      "provenance_status": "VALIDATED_HCMC_ROAD_FLOOD",
+      "deployment_validation": "PRODUCTION_HCMC_ROAD_SURFACE"
+    }
+  }
+}

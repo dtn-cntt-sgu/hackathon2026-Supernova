@@ -1,0 +1,167 @@
+[
+  {
+    "cam_id": "5d8cd4ee766c880017188946",
+    "code": "TTH 145",
+    "name": "Nguyễn Hữu Cảnh - Điện Biên Phủ",
+    "district": "Quận Bình Thạnh",
+    "lat": 10.7981,
+    "lng": 106.7186,
+    "stream_url": "https://giaothong.hochiminhcity.gov.vn:8007/Render/CameraHandler.ashx?id=5d8cd4ee766c880017188946",
+    "image_url": "data/mock_cameras/images/5d8cd4ee766c880017188946.jpg",
+    "cam_status": "UP"
+  },
+  {
+    "cam_id": "56de42f611f398ec0c481287",
+    "code": "TTH 6.1",
+    "name": "Võ Văn Kiệt - Hồ Học Lãm",
+    "district": "Quận 1",
+    "lat": 10.7685,
+    "lng": 106.6975,
+    "stream_url": "https://giaothong.hochiminhcity.gov.vn:8007/Render/CameraHandler.ashx?id=56de42f611f398ec0c481287",
+    "image_url": "data/mock_cameras/images/56de42f611f398ec0c481287.jpg",
+    "cam_status": "UP"
+  },
+  {
+    "cam_id": "58af99abbd82540010390c39",
+    "code": "TTH 36.2",
+    "name": "Điện Biên Phủ - Đinh Tiên Hoàng",
+    "district": "Quận 1",
+    "lat": 10.7902,
+    "lng": 106.6983,
+    "stream_url": "https://giaothong.hochiminhcity.gov.vn:8007/Render/CameraHandler.ashx?id=58af99abbd82540010390c39",
+    "image_url": "data/mock_cameras/images/58af99abbd82540010390c39.jpg",
+    "cam_status": "UP"
+  },
+  {
+    "cam_id": "58b5752e17139d0010f35d5f",
+    "code": "TTH 35.7",
+    "name": "Nguyễn Thị Minh Khai - Cách Mạng Tháng 8",
+    "district": "Quận 1",
+    "lat": 10.7745,
+    "lng": 106.6901,
+    "stream_url": "https://giaothong.hochiminhcity.gov.vn:8007/Render/CameraHandler.ashx?id=58b5752e17139d0010f35d5f",
+    "image_url": "data/mock_cameras/images/58b5752e17139d0010f35d5f.jpg",
+    "cam_status": "UP"
+  },
+  {
+    "cam_id": "58af8b69bd82540010390c28",
+    "code": "TTH 35.4",
+    "name": "Nam Kỳ Khởi Nghĩa - Võ Thị Sáu",
+    "district": "Quận 3",
+    "lat": 10.7868,
+    "lng": 106.6882,
+    "stream_url": "https://giaothong.hochiminhcity.gov.vn:8007/Render/CameraHandler.ashx?id=58af8b69bd82540010390c28",
+    "image_url": "data/mock_cameras/images/58af8b69bd82540010390c28.jpg",
+    "cam_status": "UP"
+  },
+  {
+    "cam_id": "58e49ff8d9d6200011e0b9d4",
+    "code": "TTH 35.2",
+    "name": "Cách Mạng Tháng 8 - Điện Biên Phủ",
+    "district": "Quận 3",
+    "lat": 10.7778,
+    "lng": 106.6815,
+    "stream_url": "https://giaothong.hochiminhcity.gov.vn:8007/Render/CameraHandler.ashx?id=58e49ff8d9d6200011e0b9d4",
+    "image_url": "data/mock_cameras/images/58e49ff8d9d6200011e0b9d4.jpg",
+    "cam_status": "UP"
+  },
+  {
+    "cam_id": "58af8d68bd82540010390c2e",
+    "code": "TTH 35.5",
+    "name": "Hai Bà Trưng - Võ Thị Sáu",
+    "district": "Quận 3",
+    "lat": 10.7885,
+    "lng": 106.6928,
+    "stream_url": "https://giaothong.hochiminhcity.gov.vn:8007/Render/CameraHandler.ashx?id=58af8d68bd82540010390c2e",
+    "image_url": "data/mock_cameras/images/58af8d68bd82540010390c2e.jpg",
+    "cam_status": "UP"
+  },
+  {
+    "cam_id": "5822b5ededeb6c0012a2d66a",
+    "code": "TTH 5.1",
+    "name": "Mai Chí Thọ - Nguyễn Cơ Thạch",
+    "district": "Quận 2",
+    "lat": 10.7732,
+    "lng": 106.7248,
+    "stream_url": "https://giaothong.hochiminhcity.gov.vn:8007/Render/CameraHandler.ashx?id=5822b5ededeb6c0012a2d66a",
+    "image_url": "data/mock_cameras/images/5822b5ededeb6c0012a2d66a.jpg",
+    "cam_status": "UP"
+  },
+  {
+    "cam_id": "583f958161cfea0012cf68f5",
+    "code": "TTH 22.6",
+    "name": "Xa Lộ Hà Nội - Thảo Điền (Quốc Hương)",
+    "district": "Quận 2",
+    "lat": 10.8015,
+    "lng": 106.7362,
+    "stream_url": "https://giaothong.hochiminhcity.gov.vn:8007/Render/CameraHandler.ashx?id=583f958161cfea0012cf68f5",
+    "image_url": "data/mock_cameras/images/583f958161cfea0012cf68f5.jpg",
+    "cam_status": "UP"
+  },
+  {
+    "cam_id": "58ad7291bd82540010390bf9",
+    "code": "TTH 44.3",
+    "name": "Ngã tư Hàng Xanh (Xô Viết Nghệ Tĩnh)",
+    "district": "Quận Bình Thạnh",
+    "lat": 10.8012,
+    "lng": 106.7115,
+    "stream_url": "https://giaothong.hochiminhcity.gov.vn:8007/Render/CameraHandler.ashx?id=58ad7291bd82540010390bf9",
+    "image_url": "data/mock_cameras/images/58ad7291bd82540010390bf9.jpg",
+    "cam_status": "UP"
+  },
+  {
+    "cam_id": "587ef859b807da0011e33d5b",
+    "code": "TTH 45.1",
+    "name": "Đinh Bộ Lĩnh - Bạch Đằng",
+    "district": "Quận Bình Thạnh",
+    "lat": 10.8038,
+    "lng": 106.7092,
+    "stream_url": "https://giaothong.hochiminhcity.gov.vn:8007/Render/CameraHandler.ashx?id=587ef859b807da0011e33d5b",
+    "image_url": "data/mock_cameras/images/587ef859b807da0011e33d5b.jpg",
+    "cam_status": "UP"
+  },
+  {
+    "cam_id": "58d7c20ac1e33c00112b321c",
+    "code": "TTH 45.4",
+    "name": "Ung Văn Khiêm - Nguyễn Gia Trí (D2)",
+    "district": "Quận Bình Thạnh",
+    "lat": 10.8051,
+    "lng": 106.7214,
+    "stream_url": "https://giaothong.hochiminhcity.gov.vn:8007/Render/CameraHandler.ashx?id=58d7c20ac1e33c00112b321c",
+    "image_url": "data/mock_cameras/images/58d7c20ac1e33c00112b321c.jpg",
+    "cam_status": "UP"
+  },
+  {
+    "cam_id": "585b2980c3f96200127dc502",
+    "code": "TTH 37.2",
+    "name": "Huỳnh Tấn Phát - Trần Xuân Soạn",
+    "district": "Quận 7",
+    "lat": 10.7482,
+    "lng": 106.7275,
+    "stream_url": "https://giaothong.hochiminhcity.gov.vn:8007/Render/CameraHandler.ashx?id=585b2980c3f96200127dc502",
+    "image_url": "data/mock_cameras/images/585b2980c3f96200127dc502.jpg",
+    "cam_status": "UP"
+  },
+  {
+    "cam_id": "58ad69c4bd82540010390be7",
+    "code": "TTH 34.10",
+    "name": "Phan Đăng Lưu - Hoàng Hoa Thám",
+    "district": "Quận Phú Nhuận",
+    "lat": 10.8029,
+    "lng": 106.6912,
+    "stream_url": "https://giaothong.hochiminhcity.gov.vn:8007/Render/CameraHandler.ashx?id=58ad69c4bd82540010390be7",
+    "image_url": "data/mock_cameras/images/58ad69c4bd82540010390be7.jpg",
+    "cam_status": "UP"
+  },
+  {
+    "cam_id": "587476e3b807da0011e33cee",
+    "code": "TTH 38.4",
+    "name": "Cộng Hòa - Út Tịch (Ngã tư Bảy Hiền)",
+    "district": "Quận Tân Bình",
+    "lat": 10.8008,
+    "lng": 106.6585,
+    "stream_url": "https://giaothong.hochiminhcity.gov.vn:8007/Render/CameraHandler.ashx?id=587476e3b807da0011e33cee",
+    "image_url": "data/mock_cameras/images/587476e3b807da0011e33cee.jpg",
+    "cam_status": "UP"
+  }
+]

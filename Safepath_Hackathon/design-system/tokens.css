@@ -1,0 +1,147 @@
+/**
+ * SafePath AI — Design System CSS Tokens (v1.0.0)
+ * Language: Cinematic Urban Intelligence
+ * Architecture: Primitive -> Semantic -> Component
+ */
+
+:root {
+  /* ==========================================================================
+     1. PRIMITIVE TOKENS (Raw Colors & Scales)
+     ========================================================================== */
+  
+  /* Dark Navy & Urban Abyssal Scale */
+  --sp-color-slate-950: #0B1120;
+  --sp-color-slate-900: #0F172A;
+  --sp-color-slate-850: #131E36;
+  --sp-color-slate-800: #1E293B;
+  --sp-color-slate-700: #334155;
+  --sp-color-slate-600: #475569;
+  --sp-color-slate-500: #64748B;
+  --sp-color-slate-400: #94A3B8;
+  --sp-color-slate-300: #CBD5E1;
+  --sp-color-slate-200: #E2E8F0;
+  --sp-color-slate-100: #F1F5F9;
+  --sp-color-slate-50:  #F8FAFC;
+
+  /* Electric Cyan & Neon Aurora */
+  --sp-color-cyan-500:  #00F0FF;
+  --sp-color-cyan-400:  #38BDF8;
+  --sp-color-cyan-600:  #0284C7;
+  --sp-color-cyan-950:  #082F49;
+
+  --sp-color-indigo-500: #6366F1;
+  --sp-color-indigo-600: #4F46E5;
+  --sp-color-indigo-400: #818CF8;
+  --sp-color-indigo-950: #1E1B4B;
+
+  /* Tactical Alert Signals */
+  --sp-color-emerald-500: #10B981;
+  --sp-color-emerald-400: #34D399;
+  --sp-color-emerald-950: #064E3B;
+
+  --sp-color-amber-500:   #F59E0B;
+  --sp-color-amber-400:   #FBBF24;
+  --sp-color-amber-950:   #78350F;
+
+  --sp-color-rose-500:    #F43F5E;
+  --sp-color-rose-400:    #FB7185;
+  --sp-color-rose-950:    #881337;
+
+  /* Spacing Scale (8-Point Grid) */
+  --sp-space-1:  4px;
+  --sp-space-2:  8px;
+  --sp-space-3:  12px;
+  --sp-space-4:  16px;
+  --sp-space-5:  20px;
+  --sp-space-6:  24px;
+  --sp-space-8:  32px;
+  --sp-space-10: 40px;
+  --sp-space-12: 48px;
+  --sp-space-16: 64px;
+
+  /* Border Radius */
+  --sp-radius-xs: 4px;
+  --sp-radius-sm: 8px;
+  --sp-radius-md: 12px;
+  --sp-radius-lg: 16px;
+  --sp-radius-xl: 20px;
+  --sp-radius-2xl: 24px;
+  --sp-radius-full: 9999px;
+
+  /* ==========================================================================
+     2. SEMANTIC TOKENS (Contextual & Accessibility Roles)
+     ========================================================================== */
+
+  /* Canvas & Surfaces */
+  --sp-bg-canvas:       var(--sp-color-slate-950);
+  --sp-bg-surface:      var(--sp-color-slate-900);
+  --sp-bg-elevated:     var(--sp-color-slate-850);
+  --sp-bg-glass:        rgba(15, 23, 42, 0.82);
+  --sp-bg-glass-heavy:  rgba(11, 17, 32, 0.92);
+
+  /* Borders & Dividers */
+  --sp-border-subtle:   rgba(255, 255, 255, 0.08);
+  --sp-border-medium:   rgba(255, 255, 255, 0.16);
+  --sp-border-strong:   rgba(255, 255, 255, 0.25);
+  --sp-border-focus:    var(--sp-color-cyan-400);
+
+  /* Typography Text Colors (High Contrast AAA) */
+  --sp-text-primary:    var(--sp-color-slate-50);
+  --sp-text-secondary:  var(--sp-color-slate-300);
+  --sp-text-muted:      var(--sp-color-slate-400);
+  --sp-text-disabled:   var(--sp-color-slate-600);
+  --sp-text-accent:     var(--sp-color-cyan-400);
+
+  /* Status Colors */
+  --sp-status-safe-bg:     rgba(16, 185, 129, 0.12);
+  --sp-status-safe-border: rgba(16, 185, 129, 0.35);
+  --sp-status-safe-fg:     var(--sp-color-emerald-400);
+
+  --sp-status-moderate-bg:     rgba(245, 158, 11, 0.12);
+  --sp-status-moderate-border: rgba(245, 158, 11, 0.35);
+  --sp-status-moderate-fg:     var(--sp-color-amber-400);
+
+  --sp-status-critical-bg:     rgba(244, 63, 94, 0.14);
+  --sp-status-critical-border: rgba(244, 63, 94, 0.40);
+  --sp-status-critical-fg:     var(--sp-color-rose-400);
+
+  /* Shadows & Depth */
+  --sp-shadow-sm:  0 2px 6px rgba(0, 0, 0, 0.4);
+  --sp-shadow-md:  0 8px 24px -4px rgba(0, 0, 0, 0.6);
+  --sp-shadow-lg:  0 20px 48px -8px rgba(0, 0, 0, 0.75);
+  --sp-glow-cyan:  0 0 24px -2px rgba(0, 240, 255, 0.35);
+  --sp-glow-blue:  0 0 28px -4px rgba(79, 70, 229, 0.45);
+
+  /* Transitions */
+  --sp-ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
+  --sp-duration-fast: 150ms;
+  --sp-duration-normal: 250ms;
+  --sp-duration-slow: 400ms;
+
+  /* ==========================================================================
+     3. COMPONENT TOKENS
+     ========================================================================== */
+
+  /* HUD Tactical Panel */
+  --hud-bg: var(--sp-bg-glass);
+  --hud-backdrop-blur: 20px;
+  --hud-backdrop-saturate: 180%;
+  --hud-border: 1px solid var(--sp-border-medium);
+  --hud-inner-shine: inset 0 1px 0 rgba(255, 255, 255, 0.14);
+  --hud-shadow: var(--sp-shadow-md);
+
+  /* HUD Buttons */
+  --btn-primary-bg: linear-gradient(135deg, #0284C7 0%, #2563EB 50%, #4F46E5 100%);
+  --btn-primary-color: #FFFFFF;
+  --btn-primary-border: 1px solid rgba(255, 255, 255, 0.25);
+  --btn-primary-shadow: 0 4px 16px -2px rgba(2, 132, 199, 0.45);
+
+  --btn-ghost-bg: rgba(255, 255, 255, 0.05);
+  --btn-ghost-color: var(--sp-text-secondary);
+  --btn-ghost-border: 1px solid var(--sp-border-subtle);
+
+  /* Telemetry Badges */
+  --badge-mono-font: 'JetBrains Mono', 'Space Mono', monospace;
+  --badge-mono-tracking: 0.06em;
+}
+

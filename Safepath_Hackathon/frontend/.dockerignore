@@ -1,0 +1,17 @@
+node_modules
+.next
+.next-*
+.env
+.env.*
+.git
+.DS_Store
+docs
+e2e
+test-results
+tests
+coverage
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+

@@ -1,0 +1,57 @@
+{
+  "name": "safepath-frontend",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint src --max-warnings=0",
+    "type-check": "next typegen && tsc --noEmit",
+    "test:navigation": "tsx --test tests/navigation-guidance.test.mjs",
+    "test:unit": "tsx --test tests/*.test.mjs"
+  },
+  "dependencies": {
+    "@deck.gl/core": "^9.0.32",
+    "@deck.gl/layers": "^9.0.32",
+    "@deck.gl/mapbox": "^9.0.32",
+    "@deck.gl/react": "^9.0.32",
+    "@types/three": "^0.186.0",
+    "clsx": "^2.1.1",
+    "driver.js": "^1.10.2",
+    "gsap": "^3.15.0",
+    "lucide-react": "^0.453.0",
+    "maplibre-gl": "6.16.0",
+    "next": "15.5.28",
+    "next-auth": "^4.24.15",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "tailwind-merge": "^2.5.3",
+    "three": "^0.186.1"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.64.1",
+    "@types/node": "^20.16.10",
+    "@types/react": "^18.3.11",
+    "@types/react-dom": "^18.3.0",
+    "autoprefixer": "^10.4.20",
+    "eslint": "^9.39.5",
+    "eslint-config-next": "^15.5.28",
+    "postcss": "8.5.32",
+    "tailwindcss": "^3.4.13",
+    "tsx": "^4.23.15",
+    "typescript": "^5.6.2",
+    "@eslint/eslintrc": "^3.3.1"
+  },
+  "overrides": {
+    "postcss": "$postcss",
+    "@typescript-eslint/parser": "8.72.1",
+    "@typescript-eslint/eslint-plugin": "8.72.1",
+    "@typescript-eslint/typescript-estree": {
+      "minimatch": "^11.0.1"
+    }
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}

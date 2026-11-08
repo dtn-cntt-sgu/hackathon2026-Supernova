@@ -1,0 +1,35 @@
+{
+  "recorded_at": "2026-11-08T03:04:38.846741+00:00",
+  "commands": [
+    {
+      "command": "python scripts/run_hackathon_benchmark.py --quick --offline --output [private-path]",
+      "exit_code": 0,
+      "result": "Actual ONNX CPU quick run; no camera/load network acceptance"
+    },
+    {
+      "command": "python scripts/run_hackathon_benchmark.py --full --qa-context <private-loopback-QA-context> --publish",
+      "exit_code": 1,
+      "result": "Full measured inference complete; load failure intentionally returns nonzero"
+    },
+    {
+      "command": "python -m pytest backend/tests -q --tb=short -rs (isolated QA env)",
+      "exit_code": 0,
+      "result": "558 PASS,15 SKIP; sequential acceptance run"
+    },
+    {
+      "command": "npm run lint && npm run type-check && npm run test:unit",
+      "exit_code": 0,
+      "result": "Lint/types PASS;12 unit PASS"
+    },
+    {
+      "command": "python -m pytest backend/tests/test_benchmark_runner.py backend/tests/test_benchmark_evaluation.py",
+      "exit_code": 0,
+      "result": "Runner/evaluation tests included in full regression; labelled fixtures are unit evidence only"
+    },
+    {
+      "command": "rerun isolated load with local-only socket guard, k6 1/10/25 planned",
+      "exit_code": 1,
+      "result": "1VU succeeds;10VU timeouts;25/50 not executed after fail-stop"
+    }
+  ]
+}

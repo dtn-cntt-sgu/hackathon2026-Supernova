@@ -1,0 +1,34 @@
+import { test, expect } from "@playwright/test";
+
+test("official daily bulletin preserves observed and forecast extrema on mobile", async ({ page }) => {
+  test.setTimeout(45000);
+  const response = await page.request.get("/api/v1/hydrology/bulletin");
+  expect(response.ok()).toBeTruthy();
+  const bulletin = await response.json();
+  expect(["DAILY_BULLETIN", "STALE"]).toContain(bulletin.status);
+  expect(bulletin.source_url).toMatch(/^https:\/\/www\.phongchonglutbaotphcm\.gov\.vn\/phocadownload\//);
+  expect(bulletin.vertical_datum).toBe("UNSPECIFIED_IN_BULLETIN");
+  const observed = bulletin.events.filter((event: any) => event.data_type === "OBSERVED");
+  const forecast = bulletin.events.filter((event: any) => event.data_type === "FORECAST");
+  expect(observed.length).toBeGreaterThanOrEqual(8);
+  expect(forecast.length).toBeGreaterThanOrEqual(8);
+  expect(new Set(bulletin.events.map((event: any) => event.station_id))).toEqual(new Set(["tram_phu_an", "tram_nha_be"]));
+  expect(observed.every((event: any) => event.quality_status !== "OBSERVED_LIVE")).toBeTruthy();
+  await page.setViewportSize({ width: 390, height: 850 });
+  await page.addInitScript(() => localStorage.setItem("safepath_tour_state_v1", JSON.stringify({ version: "v1", status: "skipped", updatedAt: new Date().toISOString() })));
+  await page.goto("/di-duong");
+  await page.getByRole("button", { name: "Mở bảng tuyến đường", exact: true }).click();
+  const panel = page.getByTestId("hydrology-bulletin");
+  await panel.scrollIntoViewIfNeeded();
+  await expect(panel).toContainText(bulletin.bulletin_number);
+  await expect(panel).toContainText("không phải mực nước hiện tại");
+  await expect(panel).toContainText("PDF không nêu riêng cho Phú An/Nhà Bè");
+  await panel.locator("summary").click();
+  await expect(panel).toContainText("Thực đo · số liệu lịch sử");
+  await expect(panel.locator('[data-type="OBSERVED"]')).toHaveCount(observed.length);
+  const dates: string[] = Array.from(new Set<string>(forecast.map((event: any) => event.event_date))).sort();
+  await panel.getByLabel("Ngày dự báo thủy triều").selectOption(dates[0]);
+  await expect(panel.locator('[data-type="FORECAST"]')).toHaveCount(forecast.filter((event: any) => event.event_date === dates[0]).length);
+  expect(await panel.evaluate(element => element.scrollWidth <= element.clientWidth)).toBeTruthy();
+  await page.screenshot({ path: "/tmp/safepath-hydrology-mobile.png" });
+});

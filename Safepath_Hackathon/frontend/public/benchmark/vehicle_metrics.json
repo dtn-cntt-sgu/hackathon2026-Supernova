@@ -1,0 +1,19 @@
+{
+  "status": "NOT EVALUATED",
+  "reason": "No labelled test manifest supplied; no accuracy can be measured",
+  "model": {
+    "name": "vgg16_ssd_hcmc.onnx",
+    "version": "vgg16-ssd-hcmc",
+    "sha256": "25fb82c0bec3091c099f359e66398a03cc73ee8917dc85467c44fad6115e81d7",
+    "manifest_sha256": "25fb82c0bec3091c099f359e66398a03cc73ee8917dc85467c44fad6115e81d7",
+    "hash_matches_manifest": true,
+    "supported_classes": {
+      "1": "motorcycle",
+      "2": "car",
+      "3": "bus",
+      "4": "truck"
+    }
+  },
+  "measured_at": "2026-11-08T02:46:39.648172+00:00",
+  "task": "vehicle"
+}

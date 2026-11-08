@@ -1,0 +1,79 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.venv/
+env/
+venv/
+ENV/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+/lib/
+/lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Environment Variables
+.env
+.env.*
+!.env.example
+!frontend/.env.example
+.env.local
+
+# Node / Frontend
+node_modules/
+*/node_modules/
+.next/
+*/.next/
+test-results/
+*/test-results/
+*.tsbuildinfo
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Docker volume data & Large binary graphs
+data/osrm/*
+!data/osrm/README.md
+storage/cams/*
+!storage/cams/.gitkeep
+
+# OS & Logs
+*.log
+.DS_Store
+**/.DS_Store
+Thumbs.db
+
+
+
+.next-cinematic/
+.vscode/
+graphify/
+
+# Graphify generated knowledge graph
+/graphify-out/
+
+# Storage camera data
+storage/*
+# Operator secrets and database backups
+backups/
+*.dump
+
+# Isolated production-readiness test build
+.next-readiness/

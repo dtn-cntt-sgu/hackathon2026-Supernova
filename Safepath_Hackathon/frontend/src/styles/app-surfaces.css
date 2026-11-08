@@ -1,0 +1,422 @@
+html:has(.spatial-dashboard),
+body:has(.spatial-dashboard) {
+  height: 100dvh;
+  overflow: hidden;
+  touch-action: manipulation;
+}
+
+/* ==========================================================================
+   SafePath AI — Light Spatial Navigation & Map Surfaces
+   Direction: Super Premium Light Cinematic & Tactical HUD
+   ========================================================================== */
+
+.spatial-dock button {
+  transition: background 0.2s, transform 0.2s;
+}
+
+.spatial-dock button:hover {
+  background: rgba(22, 139, 210, 0.08);
+}
+
+.spatial-dashboard :focus-visible {
+  outline: 2px solid #168BD2;
+  outline-offset: 4px;
+}
+
+@keyframes live-pulse {
+  50% { opacity: 0.4; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spatial-dashboard * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+.spatial-dashboard {
+  background: #F8FBFF;
+  color: #142A3B;
+}
+
+/* Floating Top Header (Spatial Pill) */
+.spatial-dashboard > header {
+  position: absolute;
+  top: 18px;
+  left: 20px;
+  right: 20px;
+  width: auto;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  height: 54px;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.98),
+    0 12px 32px rgba(22, 139, 210, 0.08),
+    0 2px 8px rgba(20, 42, 59, 0.03);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  color: #142A3B;
+  z-index: 30;
+}
+
+.spatial-dashboard > div.absolute {
+  display: none;
+}
+
+.dashboard-workspace {
+  position: absolute;
+  inset: 0;
+}
+
+.spatial-map {
+  position: absolute;
+  inset: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Left Floating Tactical Navigator & Sidebar Shell (Frosted Glass Panel) */
+.spatial-dashboard .sidebar-shell {
+  position: absolute;
+  top: 86px;
+  left: 20px;
+  bottom: 86px;
+  width: 380px;
+  height: auto;
+  max-height: calc(100dvh - 172px);
+  z-index: 20;
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease;
+}
+
+.spatial-dashboard .sidebar-shell[data-collapsed="true"] {
+  transform: translateX(-430px);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.spatial-dashboard .floating-navigator {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  max-height: 100%;
+  border-radius: 28px;
+  border: 1px solid rgba(255, 255, 255, 0.90);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.82) 0%, rgba(240, 248, 255, 0.70) 100%);
+  backdrop-filter: blur(22px) saturate(175%);
+  -webkit-backdrop-filter: blur(22px) saturate(175%);
+  box-shadow:
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.98),
+    inset 0 -1px 1px 0 rgba(22, 139, 210, 0.08),
+    0 20px 48px -6px rgba(22, 139, 210, 0.11),
+    0 4px 14px rgba(20, 42, 59, 0.04);
+  color: #142A3B;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.spatial-dashboard .glass-panel,
+.spatial-dashboard .glass-panel-elevated {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.80) 0%, rgba(240, 248, 255, 0.68) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.90);
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  box-shadow:
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.95),
+    inset 0 -1px 1px 0 rgba(22, 139, 210, 0.08),
+    0 10px 32px -4px rgba(22, 139, 210, 0.07);
+}
+
+.spatial-dashboard .glass-input {
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(191, 232, 247, 0.85);
+  color: #142A3B;
+}
+
+.spatial-dashboard .glass-input:focus {
+  background: #FFFFFF;
+  border-color: #168BD2;
+  box-shadow: 0 0 0 3px rgba(22, 139, 210, 0.18);
+}
+
+.spatial-dashboard .maplibregl-ctrl-top-right {
+  top: 85px;
+  right: 15px;
+}
+
+.spatial-dashboard .map-camera-controls {
+  top: 85px;
+  right: 65px;
+  z-index: 25;
+}
+
+.spatial-dashboard .maplibregl-ctrl-bottom-right {
+  font-size: 9px;
+}
+
+/* Bottom Floating Dock (Apple-like Spatial Pill Dock) */
+.spatial-dock {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 35;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.98);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.98),
+    0 14px 36px rgba(22, 139, 210, 0.10),
+    0 3px 10px rgba(20, 42, 59, 0.04);
+  color: #142A3B;
+  border-radius: 9999px;
+  white-space: nowrap;
+}
+
+.spatial-dock:not([data-variant]) {
+  background: rgba(255, 255, 255, 0.90);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+}
+
+.spatial-dock > a,
+.spatial-dock > button {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  font-size: 11px;
+  font-weight: 700;
+  border-radius: 9999px;
+  color: #607889;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+}
+
+.spatial-dock > a:hover,
+.spatial-dock > button:hover {
+  color: #142A3B;
+  background: rgba(22, 139, 210, 0.09);
+  transform: translateY(-1px);
+}
+
+.spatial-dock button[aria-pressed="true"] {
+  color: #168BD2;
+  background: rgba(22, 139, 210, 0.14);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+.spatial-dock button:disabled {
+  opacity: 0.5;
+}
+
+.spatial-dock > i {
+  height: 18px;
+  width: 1px;
+  background: rgba(210, 225, 240, 0.8);
+}
+
+/* Camera Evidence Inspector Drawer */
+.evidence-inspector {
+  position: absolute;
+  top: 86px;
+  right: 20px;
+  bottom: 86px;
+  width: 440px;
+  max-width: calc(100% - 32px);
+  z-index: 40;
+  animation: inspector-enter 0.3s ease-out;
+}
+
+.evidence-inspector > div {
+  height: 100%;
+  max-height: 100%;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.95), rgba(233, 245, 255, 0.88));
+  border: 1px solid rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(28px) saturate(180%);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.98),
+    0 22px 55px rgba(22, 139, 210, 0.12),
+    0 4px 14px rgba(20, 42, 59, 0.05);
+  color: #142A3B;
+  border-radius: 28px;
+}
+
+.evidence-inspector .glass-panel {
+  background: rgba(255, 255, 255, 0.8);
+  border-color: rgba(255, 255, 255, 0.95);
+}
+
+@keyframes inspector-enter {
+  from { opacity: 0; transform: translateX(30px); }
+  to { opacity: 1; transform: none; }
+}
+
+@media (min-width: 1000px) and (max-width: 1250px) {
+  .floating-navigator { width: 350px; }
+}
+
+@media (max-width: 999px) {
+  .spatial-dashboard > header nav { display: none; }
+  .spatial-dashboard .sidebar-shell { width: 340px; top: 85px; }
+  .spatial-dashboard .floating-navigator { width: 100%; height: 100%; }
+  .spatial-dock > a, .spatial-dock > button { padding: 8px 12px; }
+}
+
+/* Keep tablet headers to one row and environmental cards readable in narrow panels. */
+@media (max-width: 1279px) {
+  .spatial-dashboard > header nav { display: none; }
+}
+.spatial-dashboard > header > div { min-width: 0; }
+.spatial-dashboard > header > div:last-child { flex-shrink: 0; }
+.spatial-dashboard > header a { white-space: nowrap; }
+.environment-heading > span:first-child { min-width: 0; flex: 1 1 160px; }
+.environment-heading > span:last-child { flex: 0 1 auto; }
+.environment-cards { grid-template-columns: minmax(0, 1fr); }
+.environment-cards > div { min-width: 0; }
+.environment-cards > div > span { letter-spacing: .02em; line-height: 1.5; }
+@media (min-width: 1280px) {
+  .environment-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* Match Tailwind md and reserve space for each fixed map surface. */
+@media (max-width: 767px) {
+  .spatial-dashboard { --map-sheet-height: 128px; }
+  .spatial-dashboard[data-sheet-state="preview"] { --map-sheet-height: 168px; }
+  .spatial-dashboard[data-sheet-state="half"] { --map-sheet-height: min(45dvh, 340px); }
+  .spatial-dashboard[data-sheet-state="expanded"] { --map-sheet-height: min(78dvh, calc(100dvh - 82px)); }
+  .spatial-dashboard > header {
+    top: max(10px, env(safe-area-inset-top, 0px)); left: 10px; right: 10px;
+    padding: 0 12px; height: 48px; z-index: 30;
+  }
+  .spatial-dashboard > header > div:first-child { gap: 8px; }
+  .spatial-dashboard > header > div:last-child { gap: 6px; }
+  .spatial-dashboard > header > div:last-child > div { display: none; }
+  .spatial-dashboard > header > div:last-child button,
+  .spatial-dashboard > header > div:last-child > a { min-height: 40px; min-width: 40px; justify-content: center; }
+  .map-camera-controls {
+    position: absolute !important; top: calc(env(safe-area-inset-top, 0px) + 68px) !important;
+    right: 10px !important; left: auto !important; z-index: 20 !important; max-width: calc(100% - 20px);
+  }
+  .spatial-dashboard .maplibregl-ctrl-top-right {
+    top: calc(env(safe-area-inset-top, 0px) + 122px) !important; right: 10px !important; margin: 0 !important; z-index: 15 !important;
+  }
+  .spatial-dashboard .sidebar-shell {
+    position: absolute !important; top: auto !important; left: 10px !important; right: 10px !important;
+    bottom: max(10px, env(safe-area-inset-bottom, 0px)) !important;
+    width: auto !important; height: auto !important; max-height: calc(100dvh - 82px) !important;
+    transform: none !important; opacity: 1 !important; pointer-events: auto !important; z-index: 25;
+  }
+  .spatial-dashboard .floating-navigator {
+    position: relative; inset: auto; width: 100%; height: var(--map-sheet-height) !important;
+    max-height: calc(100dvh - 82px); border-radius: 24px;
+    overflow-y: auto; overscroll-behavior: contain; -webkit-overflow-scrolling: touch;
+  }
+  .spatial-dashboard .floating-navigator[data-sheet-state="peek"],
+  .spatial-dashboard .floating-navigator[data-sheet-state="preview"] { overflow: hidden; }
+  .spatial-dashboard .floating-navigator[data-sheet-state="peek"] .navigator-content,
+  .spatial-dashboard .floating-navigator[data-sheet-state="preview"] .navigator-content { display: none; }
+  .navigator-handle { min-height: 44px; }
+  .route-preview { flex-shrink: 0; }
+  .route-preview > div { gap: 8px; }
+  .route-preview button { flex-shrink: 0; }
+  .map-traffic-legend {
+    bottom: calc(var(--map-sheet-height) + max(10px, env(safe-area-inset-bottom, 0px)) + 12px) !important;
+    right: 10px !important; max-width: calc(100% - 20px);
+    max-height: calc(100dvh - var(--map-sheet-height) - 190px); overflow-y: auto;
+  }
+  .spatial-dashboard[data-sheet-state="expanded"] .map-traffic-legend,
+  .spatial-dashboard[data-sheet-state="half"] .map-traffic-legend { display: none; }
+  .spatial-dashboard .spatial-map { padding-bottom: 0 !important; }
+  .spatial-dashboard .maplibregl-ctrl-bottom-right,
+  .spatial-dashboard .maplibregl-ctrl-bottom-left { bottom: calc(var(--map-sheet-height) + 16px) !important; }
+  .spatial-dock { display: none !important; }
+  .evidence-inspector {
+    position: fixed !important; top: max(12px, env(safe-area-inset-top, 0px)) !important;
+    bottom: max(12px, env(safe-area-inset-bottom, 0px)) !important;
+    left: 10px !important; right: 10px !important; width: auto !important;
+    max-width: none !important; max-height: none !important; border-radius: 24px !important; z-index: 45 !important;
+  }
+  .spatial-dashboard[data-navigation-state="navigating"] .sidebar-shell,
+  .spatial-dashboard[data-navigation-state="paused"] .sidebar-shell { display: none; }
+}
+
+/* Short landscape viewports use a scrollable side panel, never two stacked offsets. */
+@media (max-width: 900px) and (orientation: landscape) and (max-height: 500px) {
+  .spatial-dashboard > header { height: 38px !important; top: 6px !important; left: 8px !important; right: 8px !important; padding: 0 10px !important; }
+  .spatial-dashboard .sidebar-shell {
+    position: absolute !important; top: 54px !important; bottom: 8px !important; left: 8px !important; right: auto !important;
+    width: min(320px, 48vw) !important; height: auto !important; max-height: calc(100dvh - 62px) !important;
+  }
+  .spatial-dashboard .floating-navigator {
+    position: relative !important; inset: auto !important; width: 100% !important; height: 100% !important;
+    max-height: calc(100dvh - 62px) !important; border-radius: 20px !important;
+  }
+  .spatial-dashboard .navigator-content { display: block !important; }
+  .spatial-dashboard .floating-navigator[data-sheet-state] { overflow-y: auto; }
+  .map-camera-controls { top: 54px !important; right: 8px !important; }
+  .spatial-dashboard .maplibregl-ctrl-top-right { top: 110px !important; right: 8px !important; }
+  .spatial-dock, .map-traffic-legend { display: none !important; }
+}
+
+/* Active Mobile Navigation Top Instruction Banner & Bottom Control Dock */
+.mobile-nav-banner {
+  position: absolute;
+  top: calc(68px + env(safe-area-inset-top, 0px));
+  left: 12px;
+  right: 12px;
+  z-index: 35;
+}
+
+.mobile-nav-dock {
+  position: absolute;
+  bottom: max(12px, env(safe-area-inset-bottom, 0px));
+  left: 12px;
+  right: 12px;
+  z-index: 35;
+}
+
+/* Auxiliary App Pages (Dashboard, Monitor, News, Account) */
+.spatial-aux {
+  background: radial-gradient(ellipse at 15% 12%, rgba(191, 232, 247, 0.45), transparent 45%),
+              radial-gradient(ellipse at 85% 18%, rgba(233, 245, 255, 0.60), transparent 42%),
+              linear-gradient(180deg, #F8FBFF, #EFF6FC) !important;
+  color: #142A3B !important;
+}
+
+.spatial-aux .glass-panel,
+.spatial-aux .glass-panel-elevated,
+.spatial-aux .glass-pill {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.80) 0%, rgba(240, 248, 255, 0.68) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.90);
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  box-shadow:
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.95),
+    inset 0 -1px 1px 0 rgba(22, 139, 210, 0.08),
+    0 10px 32px -4px rgba(22, 139, 210, 0.07);
+}
+
+.spatial-aux [class*="text-ink-"] {
+  color: #142A3B;
+}
+
+.spatial-aux .glass-input {
+  background: rgba(255, 255, 255, 0.92);
+  color: #142A3B;
+  border-color: rgba(191, 232, 247, 0.85);
+}
+
+.spatial-aux select {
+  background: rgba(255, 255, 255, 0.92);
+  color: #142A3B;
+  border-color: rgba(191, 232, 247, 0.85);
+}
+
+.spatial-aux .aurora-btn-primary {
+  background: linear-gradient(135deg, #168BD2 0%, #18B6AD 100%);
+}

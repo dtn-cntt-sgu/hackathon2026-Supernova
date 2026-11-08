@@ -1,0 +1,33 @@
+{
+  "status": "FAILED",
+  "reason": "One iteration per VU on isolated local route server, no external providers/workers. Short bursts, not sustained production capacity.",
+  "tool": "k6",
+  "levels": [
+    {
+      "concurrent_users": 1,
+      "requests": 1,
+      "duration_seconds": 6.362263457995141,
+      "requests_per_second": 0.1942129210633235,
+      "latency": {
+        "mean_ms": 4999.943,
+        "p50_ms": 4999.943,
+        "p95_ms": 4999.943,
+        "p99_ms": 4999.943
+      },
+      "http_error_rate": 1,
+      "contract_error_rate": 1,
+      "exit_code": 99,
+      "tool": "k6"
+    }
+  ],
+  "timeout_rate": {
+    "status": "NOT EVALUATED",
+    "reason": "Request error rate includes failures; no unverified separate timeout metric inferred."
+  },
+  "level_50": {
+    "status": "NOT EVALUATED",
+    "reason": "Local Docker VM3.825GiB and OSRM memory;25-user burst limit selected."
+  },
+  "isolated_external_sources": "Disabled: camera inference/ingestion, weather/news workers, TomTom/HERE. Only local OSRM/PostGIS/Redis used.",
+  "isolation_note": "Historical first attempt disabled workers/providers but did not enforce external egress for cache-miss news retrieval; diagnostic only."
+}

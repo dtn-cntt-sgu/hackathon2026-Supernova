@@ -1,0 +1,185 @@
+# Standalone production configuration. Never combine with docker-compose.yml.
+# Run scripts/production/preflight.py before starting an approved deployment.
+name: safepath-production
+
+x-backend: &backend
+  image: ${BACKEND_IMAGE:?Set approved immutable BACKEND_IMAGE}
+  build:
+    context: .
+    dockerfile: docker/backend.Dockerfile
+  environment: &backend-env
+    APP_ENV: production
+    DATABASE_URL: ${APP_DATABASE_URL:?Set a separately provisioned least-privilege APP_DATABASE_URL}
+    REDIS_URL: redis://redis:6379/0
+    OSRM_BASE_URL: http://osrm:5000
+    OSRM_GRAPH_MANIFEST_PATH: /app/data/osrm/graph-manifest.json
+    OSRM_GRAPH_VERSION: ${OSRM_GRAPH_VERSION:?Set verified OSRM_GRAPH_VERSION}
+    AUTH_SECRET: ${AUTH_SECRET:?Set AUTH_SECRET}
+    SERVICE_AUTH_TOKEN: ${SERVICE_AUTH_TOKEN:?Set a separate SERVICE_AUTH_TOKEN}
+    CORS_ALLOWED_ORIGINS: '["https://${PUBLIC_HOST:?Set PUBLIC_HOST}"]'
+    CAMERA_AI_MODE: route_only
+    CAMERA_VIEW_AI_ENABLED: ${CAMERA_VIEW_AI_ENABLED:-true}
+    CAMERA_PROXY_ENABLED: ${CAMERA_PROXY_ENABLED:-false}
+    CAMERA_ALLOW_VIEW_ONLY: ${CAMERA_ALLOW_VIEW_ONLY:-false}
+    CAMERA_INGESTION_PERMITTED: ${CAMERA_INGESTION_PERMITTED:-false}
+    CAMERA_ROUTING_EVIDENCE_PERMITTED: ${CAMERA_ROUTING_EVIDENCE_PERMITTED:-false}
+    CAMERA_PROXY_PROVIDER: ${CAMERA_PROXY_PROVIDER:-vietmap}
+    ROUTE_CAMERA_AI_ENABLED: ${ROUTE_CAMERA_AI_ENABLED:-true}
+    ROUTE_AI_MAX_CAMERAS: "4"
+    ROUTE_AI_MAX_CONCURRENCY: "2"
+    ROUTE_AI_TIMEOUT_SECONDS: "8"
+    ROUTE_AI_CACHE_TTL_SECONDS: "300"
+    ROUTE_AI_MAX_FRAME_AGE_SECONDS: "120"
+    VEHICLE_MODEL_PATH: data/models/vgg16_ssd_hcmc.onnx
+    YOLO_MODEL_PATH: data/models/vgg16_ssd_hcmc.onnx
+    HYDROLOGY_BULLETIN_ENABLED: ${HYDROLOGY_BULLETIN_ENABLED:-true}
+    HYDROLOGY_BULLETIN_POLL_SECONDS: "1800"
+    HYDROLOGY_BULLETIN_TIMEOUT_SECONDS: "10"
+    HYDROLOGY_BULLETIN_MAX_AGE_HOURS: "36"
+    TOMTOM_API_KEY: ${TOMTOM_API_KEY:-}
+    HERE_API_KEY: ${HERE_API_KEY:-}
+  volumes:
+    - ${OSRM_DATA_DIR:?Set absolute OSRM_DATA_DIR}:/app/data/osrm:ro
+  networks: [internal, egress]
+  security_opt: [no-new-privileges:true]
+  cap_drop: [ALL]
+  read_only: true
+  tmpfs: [/tmp:size=128m,mode=1777]
+  init: true
+  stop_grace_period: 35s
+  logging: &logging
+    driver: json-file
+    options:
+      max-size: "10m"
+      max-file: "3"
+
+services:
+  postgis:
+    image: postgis/postgis@sha256:a2fc46b52819d25add4ed93d3da83e106e17ea3ace6883cce3791631c9820bb2
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-safepath}
+      POSTGRES_DB: ${POSTGRES_DB:-safepath}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD}
+    volumes: [postgis_data:/var/lib/postgresql/data]
+    networks: [internal]
+    healthcheck:
+      test: [CMD-SHELL, 'pg_isready -U "$${POSTGRES_USER}" -d "$${POSTGRES_DB}"']
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    mem_limit: ${POSTGIS_MEMORY_LIMIT:-1g}
+    logging: *logging
+
+  redis:
+    image: redis@sha256:57e4255cc971b1c8d6f8a6ca283ac01bc3ecdd914273ef6bfaede87aaecd6541
+    restart: unless-stopped
+    command: [redis-server, --appendonly, "yes", --appendfsync, everysec, --maxmemory, "256mb", --maxmemory-policy, noeviction]
+    volumes: [redis_data:/data]
+    networks: [internal]
+    healthcheck:
+      test: [CMD, redis-cli, ping]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+    mem_limit: ${REDIS_MEMORY_LIMIT:-384m}
+    logging: *logging
+
+  osrm:
+    image: osrm/osrm-backend@sha256:af5d4a83fb90086a43b1ae2ca22872e6768766ad5fcbb07a29ff90ec644ee409
+    restart: unless-stopped
+    command: [osrm-routed, --algorithm, mld, /data/vietnam-latest.osrm]
+    volumes:
+      - ${OSRM_DATA_DIR:?Set absolute OSRM_DATA_DIR}:/data:ro
+      - ./scripts/osrm_healthcheck.sh:/opt/osrm_healthcheck.sh:ro
+    networks: [internal]
+    healthcheck:
+      test: [CMD, bash, /opt/osrm_healthcheck.sh]
+      interval: 20s
+      timeout: 8s
+      retries: 5
+      start_period: 120s
+    mem_limit: ${OSRM_MEMORY_LIMIT:-4g}
+    security_opt: [no-new-privileges:true]
+    read_only: true
+    logging: *logging
+
+  migrate:
+    <<: *backend
+    profiles: [tools]
+    restart: "no"
+    command: [python, -m, alembic, upgrade, head]
+    environment:
+      <<: *backend-env
+      DATABASE_URL: postgresql+asyncpg://${POSTGRES_USER:-safepath}:${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD}@postgis:5432/${POSTGRES_DB:-safepath}
+    depends_on:
+      postgis: {condition: service_healthy}
+    mem_limit: 512m
+    healthcheck: {disable: true}
+
+  backend:
+    <<: *backend
+    restart: unless-stopped
+    volumes:
+      - camera_storage:/app/storage
+      - ${OSRM_DATA_DIR:?Set absolute OSRM_DATA_DIR}:/app/data/osrm:ro
+    depends_on:
+      postgis: {condition: service_healthy}
+      redis: {condition: service_healthy}
+    healthcheck:
+      test: [CMD, python, -c, "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/api/v1/live', timeout=3)"]
+      interval: 15s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
+    mem_limit: ${BACKEND_MEMORY_LIMIT:-1536m}
+    cpus: ${BACKEND_CPUS:-2.0}
+
+  frontend:
+    image: ${FRONTEND_IMAGE:?Set approved immutable FRONTEND_IMAGE}
+    build: {context: ./frontend, dockerfile: Dockerfile}
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      APP_ENV: production
+      AUTH_SECRET: ${AUTH_SECRET:?Set AUTH_SECRET}
+      INTERNAL_BACKEND_URL: http://backend:8000
+      NEXTAUTH_URL: https://${PUBLIC_HOST:?Set PUBLIC_HOST}
+      AUTH_GOOGLE_ID: ${AUTH_GOOGLE_ID:?Set AUTH_GOOGLE_ID}
+      AUTH_GOOGLE_SECRET: ${AUTH_GOOGLE_SECRET:?Set AUTH_GOOGLE_SECRET}
+    depends_on:
+      backend: {condition: service_healthy}
+    networks: [internal, egress]
+    security_opt: [no-new-privileges:true]
+    cap_drop: [ALL]
+    init: true
+    stop_grace_period: 20s
+    mem_limit: ${FRONTEND_MEMORY_LIMIT:-512m}
+    logging: *logging
+
+  proxy:
+    image: caddy@sha256:4c6e91c6ed0e2fa03efd5b44747b625fec79bc9cd06ac5235a779726618e530d
+    restart: unless-stopped
+    environment:
+      PUBLIC_HOST: ${PUBLIC_HOST:?Set PUBLIC_HOST}
+    ports: ["80:80", "443:443"]
+    volumes:
+      - ./docker/Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      frontend: {condition: service_healthy}
+    networks: [internal, egress]
+    mem_limit: 256m
+    logging: *logging
+
+volumes:
+  postgis_data:
+  redis_data:
+  camera_storage:
+  caddy_data:
+  caddy_config:
+
+networks:
+  internal: {internal: true}
+  egress: {}

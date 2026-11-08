@@ -1,0 +1,288 @@
+{
+  "status": "LIMITED",
+  "reason": "Specification/unit scenarios, with labelled synthetic evidence; NOT field AI accuracy or road-safety guarantee.",
+  "passed": 52,
+  "total": 52,
+  "pass_ratio": 1.0,
+  "scenarios": [
+    {
+      "name": "backend.tests.test_route_ai_policy.test_verified_active_route_allowed",
+      "outcome": "PASS",
+      "seconds": 0.0
+    },
+    {
+      "name": "backend.tests.test_route_ai_policy.test_monitor_never_triggers_inference_without_route_lease",
+      "outcome": "PASS",
+      "seconds": 0.0
+    },
+    {
+      "name": "backend.tests.test_route_ai_policy.test_expired_route_lease_fails_closed",
+      "outcome": "PASS",
+      "seconds": 0.0
+    },
+    {
+      "name": "backend.tests.test_route_ai_policy.test_permission_and_feature_flag_fail_closed",
+      "outcome": "PASS",
+      "seconds": 0.0
+    },
+    {
+      "name": "backend.tests.test_route_ai_policy.test_dont_analyze_duplicate_or_bad_snapshot",
+      "outcome": "PASS",
+      "seconds": 0.0
+    },
+    {
+      "name": "backend.tests.test_route_ai_policy.test_unverified_camera_way_match_not_eligible",
+      "outcome": "PASS",
+      "seconds": 0.0
+    },
+    {
+      "name": "backend.tests.test_eta_speed_priority.test_covered_time_is_actual_distance_over_speed_without_penalties_or_clamps[60.0-60.0-CAR]",
+      "outcome": "PASS",
+      "seconds": 0.001
+    },
+    {
+      "name": "backend.tests.test_eta_speed_priority.test_covered_time_is_actual_distance_over_speed_without_penalties_or_clamps[60.0-60.0-MOTORCYCLE]",
+      "outcome": "PASS",
+      "seconds": 0.0
+    },
+    {
+      "name": "backend.tests.test_eta_speed_priority.test_covered_time_is_actual_distance_over_speed_without_penalties_or_clamps[30.0-120.0-CAR]",
+      "outcome": "PASS",
+      "seconds": 0.0
+    },
+    {
+      "name": "backend.tests.test_eta_speed_priority.test_covered_time_is_actual_distance_over_speed_without_penalties_or_clamps[30.0-120.0-MOTORCYCLE]",
+      "outcome": "PASS",
+      "seconds": 0.0
+    },
+    {
+      "name": "backend.tests.test_eta_speed_priority.test_covered_time_is_actual_distance_over_speed_without_penalties_or_clamps[1.0-3600.0-CAR]",
+      "outcome": "PASS",
+      "seconds": 0.0
+    },
+    {
+      "name": "backend.tests.test_eta_speed_priority.test_covered_time_is_actual_distance_over_speed_without_penalties_or_clamps[1.0-3600.0-MOTORCYCLE]",
+      "outcome": "PASS",
+      "seconds": 0.0
+    },
+    {
+      "name": "backend.tests.test_eta_speed_priority.test_covered_time_is_actual_distance_over_speed_without_penalties_or_clamps[120.0-30.0-CAR]",
+      "outcome": "PASS",
+      "seconds": 0.0
+    },
+    {
+      "name": "backend.tests.test_eta_speed_priority.test_covered_time_is_actual_distance_over_speed_without_penalties_or_clamps[120.0-30.0-MOTORCYCLE]",
+      "outcome": "PASS",
+      "seconds": 0.0
+    },
+    {
+      "name": "backend.tests.test_eta_speed_priority.test_partial_speed_replaces_only_covered_osrm_time_and_peak_applies_only_to_rest",
+      "outcome": "PASS",
+      "seconds": 0.0
+    },
+    {
+      "name": "backend.tests.test_eta_speed_priority.test_invalid_speed_support_falls_back_without_claiming_live_eta[changes0]",
+      "outcome": "PASS",
+      "seconds": 0.0
+    },
+    {
+      "name": "backend.tests.test_eta_speed_priority.test_invalid_speed_support_falls_back_without_claiming_live_eta[changes1]",
+      "outcome": "PASS",
+      "seconds": 0.0
+    },
+    {
+      "name": "backend.tests.test_eta_speed_priority.test_invalid_speed_support_falls_back_without_claiming_live_eta[changes2]",
+      "outcome": "PASS",
+      "seconds": 0.0
+    },
+    {
+      "name": "backend.tests.test_eta_speed_priority.test_invalid_speed_support_falls_back_without_claiming_live_eta[changes3]",
+      "outcome": "PASS",
+      "seconds": 0.0
+    },
+    {
+      "name": "backend.tests.test_eta_speed_priority.test_invalid_speed_support_falls_back_without_claiming_live_eta[changes4]",
+      "outcome": "PASS",
+      "seconds": 0.0
+    },
+    {
+      "name": "backend.tests.test_eta_speed_priority.test_invalid_speed_support_falls_back_without_claiming_live_eta[changes5]",
+      "outcome": "PASS",
+      "seconds": 0.0
+    },
+    {
+      "name": "backend.tests.test_eta_speed_priority.test_invalid_speed_support_falls_back_without_claiming_live_eta[changes6]",
+      "outcome": "PASS",
+      "seconds": 0.0
+    },
+    {
+      "name": "backend.tests.test_eta_speed_priority.test_invalid_speed_support_falls_back_without_claiming_live_eta[changes7]",
+      "outcome": "PASS",
+      "seconds": 0.0
+    },
+    {
+      "name": "backend.tests.test_eta_speed_priority.test_invalid_speed_support_falls_back_without_claiming_live_eta[changes8]",
+      "outcome": "PASS",
+      "seconds": 0.0
+    },
+    {
+      "name": "backend.tests.test_eta_speed_priority.test_invalid_speed_support_falls_back_without_claiming_live_eta[changes9]",
+      "outcome": "PASS",
+      "seconds": 0.0
+    },
+    {
+      "name": "backend.tests.test_eta_speed_priority.test_invalid_speed_support_falls_back_without_claiming_live_eta[changes10]",
+      "outcome": "PASS",
+      "seconds": 0.0
+    },
+    {
+      "name": "backend.tests.test_eta_speed_priority.test_invalid_speed_support_falls_back_without_claiming_live_eta[changes11]",
+      "outcome": "PASS",
+      "seconds": 0.0
+    },
+    {
+      "name": "backend.tests.test_eta_speed_priority.test_density_only_camera_does_not_manufacture_speed_or_live_eta",
+      "outcome": "PASS",
+      "seconds": 0.0
+    },
+    {
+      "name": "backend.tests.test_eta_speed_priority.test_risk_and_signal_counts_cannot_change_measured_eta",
+      "outcome": "PASS",
+      "seconds": 0.0
+    },
+    {
+      "name": "backend.tests.test_eta_speed_priority.test_uncovered_baseline_responds_to_osrm_and_preserves_relative_step_duration",
+      "outcome": "PASS",
+      "seconds": 0.0
+    },
+    {
+      "name": "backend.tests.test_eta_speed_priority.test_motorized_flow_does_not_affect_walking_or_claim_walk_traffic_coverage",
+      "outcome": "PASS",
+      "seconds": 0.0
+    },
+    {
+      "name": "backend.tests.test_eta_speed_priority.test_empty_segment_and_zero_distance_baselines_stay_finite",
+      "outcome": "PASS",
+      "seconds": 0.0
+    },
+    {
+      "name": "backend.tests.test_benchmark_route_scenarios.test_independent_segment_safety_expectations[no_camera]",
+      "outcome": "PASS",
+      "seconds": 0.001
+    },
+    {
+      "name": "backend.tests.test_benchmark_route_scenarios.test_independent_segment_safety_expectations[stale_camera]",
+      "outcome": "PASS",
+      "seconds": 0.0
+    },
+    {
+      "name": "backend.tests.test_benchmark_route_scenarios.test_independent_segment_safety_expectations[wrong_edge]",
+      "outcome": "PASS",
+      "seconds": 0.0
+    },
+    {
+      "name": "backend.tests.test_benchmark_route_scenarios.test_independent_segment_safety_expectations[missing_weather]",
+      "outcome": "PASS",
+      "seconds": 0.0
+    },
+    {
+      "name": "backend.tests.test_benchmark_route_scenarios.test_independent_segment_safety_expectations[severe_verified_flood]",
+      "outcome": "PASS",
+      "seconds": 0.0
+    },
+    {
+      "name": "backend.tests.test_benchmark_route_scenarios.test_provider_no_connected_path_returns_no_route_not_invented_geometry[NoRoute]",
+      "outcome": "PASS",
+      "seconds": 0.001
+    },
+    {
+      "name": "backend.tests.test_benchmark_route_scenarios.test_provider_no_connected_path_returns_no_route_not_invented_geometry[NoSegment]",
+      "outcome": "PASS",
+      "seconds": 0.001
+    },
+    {
+      "name": "backend.tests.test_benchmark_route_scenarios.test_provider_timeout_returns_unavailable_without_substitute_route",
+      "outcome": "PASS",
+      "seconds": 0.001
+    },
+    {
+      "name": "backend.tests.test_benchmark_route_scenarios.test_real_route_assembly_prefers_noncritical_and_never_recommends_all_hazardous[False]",
+      "outcome": "PASS",
+      "seconds": 0.005
+    },
+    {
+      "name": "backend.tests.test_benchmark_route_scenarios.test_real_route_assembly_prefers_noncritical_and_never_recommends_all_hazardous[True]",
+      "outcome": "PASS",
+      "seconds": 0.002
+    },
+    {
+      "name": "backend.tests.test_exact_route_matching.test_exact_multi_edge_and_parallel_bridge_junction",
+      "outcome": "PASS",
+      "seconds": 1.426
+    },
+    {
+      "name": "backend.tests.test_exact_route_matching.test_direction_provenance_ambiguity_and_missing_coverage",
+      "outcome": "PASS",
+      "seconds": 1.666
+    },
+    {
+      "name": "backend.tests.test_exact_route_matching.test_multi_edge_aggregation_preserves_second_edge_hazard_and_requires_edge_proof",
+      "outcome": "PASS",
+      "seconds": 0.003
+    },
+    {
+      "name": "backend.tests.test_exact_route_matching.test_matched_serious_evidence_changes_ranking_and_all_hazardous_is_not_recommended",
+      "outcome": "PASS",
+      "seconds": 1.414
+    },
+    {
+      "name": "backend.tests.test_exact_route_matching.test_graph_manifest_invalidates_modified_artifact",
+      "outcome": "PASS",
+      "seconds": 0.004
+    },
+    {
+      "name": "backend.tests.test_exact_route_matching.test_news_closure_wins_over_congestion_and_dry_camera",
+      "outcome": "PASS",
+      "seconds": 0.005
+    },
+    {
+      "name": "backend.tests.test_exact_route_matching.test_community_requires_review_exact_edge_and_freshness",
+      "outcome": "PASS",
+      "seconds": 0.0
+    },
+    {
+      "name": "backend.tests.test_exact_route_matching.test_aggregate_safe_plus_uncertain_remains_unknown_and_hazards_are_preserved[UNKNOWN]",
+      "outcome": "PASS",
+      "seconds": 0.0
+    },
+    {
+      "name": "backend.tests.test_exact_route_matching.test_aggregate_safe_plus_uncertain_remains_unknown_and_hazards_are_preserved[INSUFFICIENT_EVIDENCE]",
+      "outcome": "PASS",
+      "seconds": 0.0
+    },
+    {
+      "name": "backend.tests.test_exact_route_matching.test_edge_scoring_exception_cannot_turn_partial_safe_step_into_safe_route",
+      "outcome": "PASS",
+      "seconds": 0.003
+    }
+  ],
+  "commands": [
+    {
+      "command": "python -m pytest backend/tests/test_route_ai_policy.py backend/tests/test_eta_speed_priority.py backend/tests/test_benchmark_route_scenarios.py -q",
+      "exit_code": 0,
+      "wall_seconds": 1.097351707983762
+    },
+    {
+      "command": "python -m pytest backend/tests/test_exact_route_matching.py -q",
+      "exit_code": 0,
+      "wall_seconds": 5.3596384160046
+    }
+  ],
+  "postgis_integration": "EXECUTED",
+  "scenario_wall_time_scope": "Includes pytest fixture/setup; not route-computation latency.",
+  "eta_error": {
+    "status": "NOT EVALUATED",
+    "reason": "No measured actual trip durations / paired ground truth."
+  },
+  "measured_at": "2026-11-08T03:03:32.537442+00:00"
+}

@@ -1,0 +1,9 @@
+# Overlay ONLY docker-compose.prod.yml, never the development compose.
+# Immutable digests required; separate project, env file, host, database and volumes.
+services:
+  backend:
+    image: ${BACKEND_IMAGE:?Set approved backend image@sha256 digest}
+  migrate:
+    image: ${BACKEND_IMAGE:?Set approved backend image@sha256 digest}
+  frontend:
+    image: ${FRONTEND_IMAGE:?Set approved frontend image@sha256 digest}
